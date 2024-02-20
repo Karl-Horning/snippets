@@ -18,9 +18,6 @@ export default function SnippetCreatePage() {
             },
         });
 
-        // TODO: Remove
-        console.log(snippet);
-
         // Redirect back to the root route
         redirect("/");
     };
