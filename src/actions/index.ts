@@ -3,8 +3,6 @@
 import { db } from "@/db";
 import { redirect } from "next/navigation";
 
-db;
-
 export async function editSnippet(id: number, code: string) {
     await db.snippet.update({
         where: { id },
@@ -12,4 +10,10 @@ export async function editSnippet(id: number, code: string) {
     });
 
     redirect(`/snippets/${id}`);
+}
+
+export async function deleteSnippit(id: number) {
+    await db.snippet.delete({ where: { id } });
+
+    redirect("/");
 }
