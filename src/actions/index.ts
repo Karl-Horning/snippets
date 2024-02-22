@@ -17,3 +17,47 @@ export async function deleteSnippit(id: number) {
 
     redirect("/");
 }
+
+export const createSnippet = async (
+    formState: { message: string },
+    formData: FormData
+) => {
+    try {
+        // Validate inputs
+        const title = formData.get("title");
+        const code = formData.get("code");
+
+        if (typeof title !== "string" || title.length < 3) {
+            return {
+                message: "Title must be longer",
+            };
+        }
+
+        if (typeof code !== "string" || code.length < 10) {
+            return {
+                message: "Code must be longer",
+            };
+        }
+
+        // Create a new database record
+        await db.snippet.create({
+            data: {
+                title,
+                code,
+            },
+        });
+    } catch (error: unknown) {
+        if (error instanceof Error) {
+            return {
+                message: error.message,
+            };
+        } else {
+            return {
+                message: "Something went wrong...",
+            };
+        }
+    }
+
+    // Redirect back to the root route
+    redirect("/");
+};
