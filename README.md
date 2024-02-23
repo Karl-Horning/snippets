@@ -41,7 +41,7 @@ This application allows users to manage code snippets efficiently. Users can cre
 
 ## Contributors
 
-- Karl Horning (@karlhorning)
+- [Karl Horning](https://github.com/Karl-Horning/)
 
 ## License
 
